@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Vítejte!{% endblock %}</title>
+
+    <!-- CSS: -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JS: -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<div class="container-fluid">
+    <!-- Content here -->
+    <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+        <p align="center">
+            <a class="nav-link active" href="C:\Users\monik\PhpstormProjects\retaska\templates\adminbase.html.twig">Admin</a>
+        </p>
+    </div>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: deepskyblue; height: 30px">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('order_index') }}">Objednávky<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('product_index') }}">Produkty<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('category_index') }}">Kategorie<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('delivery_index') }}">Doprava<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('country_index') }}">Země<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('payment_index') }}">Platba<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <body>
+    <header>
+        <a style="font-size: 20px; font-weight: bold">Vítej, admine!</a>
+
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <footer class="card-footer text-muted fixed-bottom" >
+        <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+        <p align="center">
+            <strong>
+                © 2019 | Designed by MOberfalcerova
+            </strong>
+        </p>
+
+    </footer>
+
+
+
+
+    {% block javascripts %}{% endblock %}
+
+    </body>
+</html>
