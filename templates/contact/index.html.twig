@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Vítejte!{% endblock %}</title>
+
+    <!-- CSS: -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+
+<div class="container-fluid">
+    <!-- Content here -->
+
+    <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+        <p align="center">
+            <a class="nav-link active" href="retaska/public/">Admin</a>
+        </p>
+    </div>
+
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <header class="blog-header py-1">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-2 pt-1">
+                    <img src="{{ asset('images/logo1.PNG') }}" width="60" alt="">
+                </div>
+                <div class="col-3 pt-1">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/retaska/public">Hlavní strana</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3 pt-1">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('product_index') }}">Produkty</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3 pt-1">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('contact_index') }}">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-3 pt-1">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Košík</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 pt-2">
+                    <nav class="navbar navbar-light bg-light">
+                        <form class="form-inline mt-2 mt-md-0">
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </form>
+                    </nav>
+                </div>
+            </div>
+
+
+
+
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('images/hvezdice.PNG') }}" class="img-fluid" width="150%" height="40%" alt="Responsive image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/plasty3.PNG') }}" class="img-fluid" width="150%" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('images/more4.PNG') }}" class="img-fluid" width="150%" alt="...">
+                    </div>
+                </div>
+            </div>
+
+
+
+        </header>
+    </nav>
+
+
+    <p><h1>Kontakt</h1></p>
+
+
+    <br><b>Tel:</b> 777 888 999</br>
+    <br><b>E-mail:</b> retaska@retaska.seznam.cz
+
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+
+
+
+<footer class="card-footer text-muted fixed-bottom" >
+    <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+        <p align="center">
+            <strong>
+                © 2019 | Designed by MOberfalcerova
+            </strong>
+        </p>
+    </div>
+</footer>
+</div>
+
+
+
+</html>
+
