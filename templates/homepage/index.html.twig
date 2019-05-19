@@ -10,33 +10,46 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
 
-    <div class="card-group">
-        <div class="card">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Papírová taška 26x33 mm</h4>
+            </div>
             <img src="{{ asset('images/paptaska 26x33cm.PNG') }}" class="card-img-top" width="20" height="120" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Papírová taška 26x33 mm</h5>
-                <p class="card-text">Papírová taška hnědá, BIO barva. Balení obsahuje 20 ks sáčků.</p>
-                <button type="button" class="btn btn-primary">Detail produktu</button>
+                <ul class="list-unstyled mt-3 mb-4">
+                    Papírová taška hnědá, BIO barva. Balení obsahuje 20 ks sáčků.
+                </ul>
+                <a class="nav-link" href="http://monikaoberfalcerova.php-kurz.braincraft.cz/retaska/public/admin/product/3">Detail produktu<span class="sr-only">(current)</span></a>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Papírové sáčky 15x30 mm</h4>
+            </div>
+            <img src="{{ asset('images/papsacek12x32,5_20ks.PNG') }}" class="card-img-top" width="20" height="120" alt="...">
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    Papírové sáčky hnědé, BIO barva. Balení obsahuje 50 ks sáčků.
+                </ul>
+                <a class="nav-link" href="http://monikaoberfalcerova.php-kurz.braincraft.cz/retaska/public/admin/product/2">Detail produktu<span class="sr-only">(current)</span></a>
 
             </div>
         </div>
-        <div class="card">
-            <img src="{{ asset('images/papsacek12x32,5_20ks.PNG') }}" class="card-img-top" width="20" height="120 alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Papírové sáčky 15x30 mm</h5>
-                <p class="card-text">Papírové sáčky hnědé, BIO barva. Balení obsahuje 50 ks sáčků.</p>
-                <button type="button" class="btn btn-primary">Detail produktu</button>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Plátěná taška 41x 38 mm</h4>
             </div>
-        </div>
-        <div class="card">
-            <img src="{{ asset('images/platenataska41x38.PNG') }}" class="card-img-top" width="20" height="120 alt="...">
+            <img src="{{ asset('images/platenataska41x38.PNG
+') }}" class="card-img-top" width="20" height="120" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Plátěná nákupní taška 41x 38 mm</h5>
-                <p class="card-text">Velká plátěná nákupní taška naturální. Rozměry 41x 38 mm.</p>
-                <button type="button" class="btn btn-primary">Detail produktu</button>
+                <ul class="list-unstyled mt-3 mb-4">
+                    Velká plátěná nákupní taška naturální. Rozměry 41x 38 mm.
+
+                </ul>
+                <a class="nav-link" href="http://monikaoberfalcerova.php-kurz.braincraft.cz/retaska/public/admin/product/5">Detail produktu<span class="sr-only">(current)</span></a>
             </div>
         </div>
     </div>
-
 
 {% endblock %}
