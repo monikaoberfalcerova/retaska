@@ -1,5 +1,4 @@
-{% extends 'adminbase.html.twig' %}
-
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Produkty</h1>
@@ -33,7 +32,6 @@
                 <td>{{ product.instock }}</td>
                 <td>
                     <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
 
                 </td>
             </tr>
@@ -45,6 +43,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('product_new') }}">Create new</a>
-   {% endblock %}
-
+    {% endblock %}

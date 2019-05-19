@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/product")
- */
+* @Route("/admin/product")
+*/
 class ProductController extends AbstractController
 {
     /**
@@ -21,6 +21,16 @@ class ProductController extends AbstractController
     public function index(ProductRepository $productRepository): Response
     {
         return $this->render('product/index.html.twig', [
+            'products' => $productRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/publicindex", name="product_publicindex", methods={"GET"})
+     */
+    public function publicindex(ProductRepository $productRepository): Response
+    {
+        return $this->render('product/publicindex.html.twig', [
             'products' => $productRepository->findAll(),
         ]);
     }

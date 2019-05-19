@@ -21,6 +21,7 @@
     <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
         <p align="center">
             <a class="nav-link active" href="C:\Users\monik\PhpstormProjects\retaska\templates\adminbase.html.twig">Admin</a>
+
         </p>
     </div>
 
@@ -48,17 +49,15 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ path('payment_index') }}">Platba<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item active">
+            <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3"  href="{{ path('homepage') }}">Zpět na domovskou stranu</a>
+            </li>
         </ul>
     </div>
 </nav>
 </div>
 
-    <body>
-    <header>
-        <a style="font-size: 20px; font-weight: bold; ">Vítej, admine!</a>
 
-    </header>
-    </body>
 
     {% block body %}{% endblock %}
 
