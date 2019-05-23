@@ -89,6 +89,8 @@
 
 
         {{ form_end(form) }}
+
+
     </div>
     <div class="container col-md-4" style="background-color: #f1f2f3; padding: 5%">
 
@@ -99,4 +101,36 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let sumPrice = 0;
+        $('.total_product').each(function() {
+            sumPrice += parseInt($(this).text());
+        });
+        let totalPrice = sumPrice;
+        let delivery = $('#order_delivery option:selected').attr('data-delivery');
+        let payment = $('#order_payment option:selected').attr('data-payment');
+        function updatePrice () {
+            let delivery = parseInt($('#order_delivery option:selected').attr('data-delivery'));
+            let payment = parseInt($('#order_payment option:selected').attr('data-payment'));
+            let totalPrice = delivery + payment + totalPrice;
+            $('#total_payment').text(payment + 'Kč');
+            $('#total_delivery').text(delivery + 'Kč');
+            $('#total_delivery_name').text($('#order_delivery option:selected').text());
+            $('#total_payment_name').text($('#order_payment option:selected').text());
+            $('#total_pricing').text( totalPrice + ' Kč');
+        };
+        $(document).ready(function () {
+            updatePrice();
+        });
+        $('#order_payment, #order_delivery').on('change', function (){
+            updatePrice()
+        });
+        //$('#order_count').on('change', updatePrice());
+        //$('#order_delivery').on('change', updatePrice());
+        //$('#order_payment').on('change', updatePrice());
+        //$('#order_count, #order_delivery, #order_payment').on('change', updatePrice());
+    </script>
 {% endblock %}
