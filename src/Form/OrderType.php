@@ -15,14 +15,6 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('telephone')
-            ->add('name')
-            ->add('surname')
-            ->add('street')
-            ->add('city')
-            ->add('psc')
-            ->add('poznamka')
             ->add('count', ChoiceType::class, [
                 'choices'=>
                     ['1'=>'1',
@@ -36,6 +28,14 @@ class OrderType extends AbstractType
                  'choice_label' => 'name'
              ])
          */
+            ->add('name')
+            ->add('surname')
+            ->add('email')
+            ->add('telephone')
+            ->add('street')
+            ->add('city')
+            ->add('psc')
+            ->add('poznamka')
             ->add('country', EntityType::class, [
                 'class' => Country::class,
                 'choice_label' => 'name'

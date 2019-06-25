@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
  * @ORM\Table(name="`order`")
@@ -15,15 +16,15 @@ class Order
     private $id;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="orders")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $product;
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $telephone;
     /**
@@ -31,19 +32,25 @@ class Order
      */
     private $name;
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $surname;
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $street;
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $city;
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Range(
+     *     min=0,
+     *     max=99999,
+     *     minMessage="Zadejte platné PSČ",
+     *     maxMessage="Zadejte platné PSČ"
+     * )
      */
     private $psc;
     /**
@@ -63,11 +70,20 @@ class Order
      */
     private $delivery;
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="integer")
+     *
      */
     private $totalprice;
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
+     * @Assert\Range(
+     *     min="1"
+     * )
      */
     private $count;
     public function getId(): ?int
@@ -173,6 +189,15 @@ class Order
         $this->poznamka = $poznamka;
         return $this;
     }
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+        return $this;
+    }
     public function getTotalprice(): ?float
     {
         return $this->totalprice;
@@ -200,4 +225,5 @@ class Order
         $this->count = $count;
         return $this;
     }
+
 }

@@ -1,10 +1,8 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Vytvořit objednávku{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
 
     {{ include('order/_form.html.twig', {'button_label': 'Odeslat objednávku'}) }}
 
-        <a href="{{ path('order_index') }}">back to list</a>
+    <a href="{{ path('order_index') }}">back to list</a>
 {% endblock %}

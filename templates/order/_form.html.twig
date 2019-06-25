@@ -1,136 +1,106 @@
+{% extends 'base.html.twig' %}
 {% block navbar %}{% endblock %}
-
 {% block body %}
-
-{{ form_start(form) }}
-<div class="row">
-    <div class="container col-md-6" style="margin-top: 3% ">
-        <h2>Objednávka</h2>
-        <table class="table">
-            <tbody>
-
-            {#<tr><td>Co si přejete objednat?</td>
-                <td>{{ form_widget(form.product) }}<br>
-                    {{ form_errors(form.product) }}</td>
-            </tr>#}
-            <tr>
-                <td>Počet kusů</td>
-                <td> {{ form_widget(form.count) }}<br>
-                    {{ form_errors(form.count) }}</td>
-            </tr>
-            <tr>
-                <td>Jméno</td>
-                <td> {{ form_widget(form.name) }}<br>
-                    {{ form_errors(form.name) }}</td>
-            </tr>
-            <tr>
-                <td>Příjmení</td>
-                <td> {{ form_widget(form.surname) }}<br>
-                    {{ form_errors(form.surname) }}</td>
-            </tr>
-            <tr>
-                <td>E-mail</td>
-                <td> {{ form_widget(form.email) }}<br>
-                    {{ form_errors(form.email) }}</td>
-            </tr>
-            <tr>
-                <td>Telefon</td>
-                <td> {{ form_widget(form.telephone) }}<br>
-                    {{ form_errors(form.telephone) }}</td>
-            </tr>
-            <tr>
-                <td><h5>Adresa, na kterou Vám zboží doručíme:</h5></td><td></td>
-            </tr>
-            <tr>
-                <td>Ulice a č.p.</td>
-                <td> {{ form_widget(form.street) }}<br>
-                    {{ form_errors(form.street) }}</td>
-            </tr>
-            <tr>
-                <td>Město</td>
-                <td> {{ form_widget(form.city) }}<br>
-                    {{ form_errors(form.city) }}</td>
-            </tr>
-            <tr>
-                <td>PSČ</td>
-                <td> {{ form_widget(form.psc) }}<br>
-                    {{ form_errors(form.psc) }}</td>
-            </tr>
-            <tr>
-                <td>Země</td>
-                <td> {{ form_widget(form.country) }}<br>
-                    {{ form_errors(form.country) }}</td>
-            </tr>
-            <tr>
-                <td><h5>Forma platby:</h5></td>
-                <td>{{ form_widget(form.payment) }}<br>
-                    {{ form_errors(form.payment) }}
-                    Cena: <span id="cenazaplatbu">0</span>,- Kč</td>
-            </tr>
-            <tr>
-                <td><h5>Forma dopravy:</h5></td>
-                <td>{{ form_widget(form.delivery) }}<br>
-                    {{ form_errors(form.delivery) }}
-                    Cena: <span id="cenazadopravu">69</span>,- Kč</td>
-            </tr>
-            <tr>
-                <td><h5>Zde můžete uvést poznámku:</h5></td>
-                <td>{{ form_widget(form.poznamka) }}<br>
-                    {{ form_errors(form.poznamka) }}</td>
-            </tr>
-            </tbody>
-        </table>
-
-
-
-
-        {{ form_widget(form) }}
-        <button class="btn btn-success">{{ button_label|default('Save') }}</button>
-
-
-        {{ form_end(form) }}
-
-
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="container col-md-6" style="margin-top: 3% ">
+            <h2>Objednávka</h2>
+            <table class="table">
+                <tbody>
+                {#<tr><td>Co si přejete objednat?</td>
+                    <td>{{ form_widget(form.product) }}<br>
+                        {{ form_errors(form.product) }}</td>
+                </tr>#}
+                <tr>
+                    <td>Počet kusů</td>
+                    <td> {{ form_widget(form.count) }}<br>
+                        {{ form_errors(form.count) }}</td>
+                </tr>
+                <tr>
+                    <td>Jméno</td>
+                    <td> {{ form_widget(form.name) }}<br>
+                        {{ form_errors(form.name) }}</td>
+                </tr>
+                <tr>
+                    <td>Příjmení</td>
+                    <td> {{ form_widget(form.surname) }}<br>
+                        {{ form_errors(form.surname) }}</td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td> {{ form_widget(form.email) }}<br>
+                        {{ form_errors(form.email) }}</td>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td> {{ form_widget(form.telephone) }}<br>
+                        {{ form_errors(form.telephone) }}</td>
+                </tr>
+                <tr>
+                    <td><h5>Adresa, na kterou Vám zboží doručíme:</h5></td><td></td>
+                </tr>
+                <tr>
+                    <td>Ulice a č.p.</td>
+                    <td> {{ form_widget(form.street) }}<br>
+                        {{ form_errors(form.street) }}</td>
+                </tr>
+                <tr>
+                    <td>Město</td>
+                    <td> {{ form_widget(form.city) }}<br>
+                        {{ form_errors(form.city) }}</td>
+                </tr>
+                <tr>
+                    <td>PSČ</td>
+                    <td> {{ form_widget(form.psc) }}<br>
+                        {{ form_errors(form.psc) }}</td>
+                </tr>
+                <tr>
+                    <td>Země</td>
+                    <td> {{ form_widget(form.country) }}<br>
+                        {{ form_errors(form.country) }}</td>
+                </tr>
+                <tr>
+                    <td><h5>Forma platby:</h5></td>
+                    <td>{{ form_widget(form.payment) }}<br>
+                        {{ form_errors(form.payment) }}
+                        Cena: <span id="cenazaplatbu">0</span>,- Kč</td>
+                </tr>
+                <tr>
+                    <td><h5>Forma dopravy:</h5></td>
+                    <td>{{ form_widget(form.delivery) }}<br>
+                        {{ form_errors(form.delivery) }}
+                        Cena: <span id="cenazadopravu">69</span>,- Kč</td>
+                </tr>
+                <tr>
+                    <td><h5>Zde můžete uvést poznámku:</h5></td>
+                    <td>{{ form_widget(form.poznamka) }}<br>
+                        {{ form_errors(form.poznamka) }}</td>
+                </tr>
+                </tbody>
+            </table>
+            {{ form_widget(form) }}
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="container col-md-4" style="background-color: #f1f2f3; padding: 5%">
+            <p style="text-align: center">Rekapitulace objednávky:</p>
+            <br>Celková cena:
+            <div id="nakupcelkem"></div>
+        </div>
     </div>
-    <div class="container col-md-4" style="background-color: #f1f2f3; padding: 5%">
-
-        <p style="text-align: center">Rekapitulace objednávky:</p>
-
-        <br>Celková cena:
-        <div id="nakupcelkem"></div>
-    </div>
-</div>
-
 {% endblock %}
 
-{% block javascripts %}
-    <script>
-        let sumPrice = 0;
-        $('.total_product').each(function() {
-            sumPrice += parseInt($(this).text());
-        });
-        let totalPrice = sumPrice;
-        let delivery = $('#order_delivery option:selected').attr('data-delivery');
-        let payment = $('#order_payment option:selected').attr('data-payment');
-        function updatePrice () {
-            let delivery = parseInt($('#order_delivery option:selected').attr('data-delivery'));
-            let payment = parseInt($('#order_payment option:selected').attr('data-payment'));
-            let totalPrice = delivery + payment + totalPrice;
-            $('#total_payment').text(payment + 'Kč');
-            $('#total_delivery').text(delivery + 'Kč');
-            $('#total_delivery_name').text($('#order_delivery option:selected').text());
-            $('#total_payment_name').text($('#order_payment option:selected').text());
-            $('#total_pricing').text( totalPrice + ' Kč');
-        };
-        $(document).ready(function () {
-            updatePrice();
-        });
-        $('#order_payment, #order_delivery').on('change', function (){
-            updatePrice()
-        });
-        //$('#order_count').on('change', updatePrice());
-        //$('#order_delivery').on('change', updatePrice());
-        //$('#order_payment').on('change', updatePrice());
-        //$('#order_count, #order_delivery, #order_payment').on('change', updatePrice());
-    </script>
-{% endblock %}
+ {% block javascripts %}
+     <script>
+         $('#order_count').on('change', function (e) {
+             e.preventDefault();
+             let count = $('#order_count').val();
+             console.log(count);
+         })
+         $('#order_transport').on('change', function (e) {
+             e.preventDefault();
+             let cenaDoprava = parseInt($('#order_transport option:selected').attr('data-transport'));
+             console.log(data - transport);
+         })
+     </script>
+ {% endblock %}
