@@ -5,9 +5,12 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
+use App\Repository\ProductRepository;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -30,27 +33,45 @@ class OrderController extends AbstractController
     /**
      * @Route("/order/new", name="order_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SessionInterface $session, ProductRepository $productRepository): Response
     {
         $order = new Order();
+        $orderProducts = $session->get('basket');
+
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
+        $order->setProducts($orderProducts);
+
+        $totalprice = array_sum(array_column($orderProducts, 'total'));
+
+        $order->setTotalPrice($totalprice);
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $order->setStatus("0");
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($order);
+
             $entityManager->flush();
 
-            return $this->render('thankyou.html.twig');
+            // vyprázdnění košíku po odeslání objednávky:
+            $basket = [];
+            $session->set('basket', $basket);
+
+            return $this->redirectToRoute('thankyou');
         }
         return $this->render('order/new.html.twig', [
             'order' => $order,
             'form' => $form->createView(),
+            'totalprice'=> $totalprice,
         ]);
     }
 
+
     /**
-     * @Route("/admin/order/{id}", name="objednavka_show", methods={"GET"})
+     * @Route("/admin/order/{id}", name="order_show", methods={"GET"})
      */
     public function show(Order $order): Response
     {
@@ -60,14 +81,16 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/admin/order/{id}/edit", name="objednavka_edit", methods={"GET","POST"})
+     * @Route("/admin/order/{id}/edit", name="order_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Order $order): Response
     {
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
             return $this->redirectToRoute('order_index', [
                 'id' => $order->getId(),
             ]);

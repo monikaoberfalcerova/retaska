@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th>Id</th>
+            <th>Products</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
@@ -18,8 +19,7 @@
             <th>Psc</th>
             <th>Poznamka</th>
             <th>TotalPrice</th>
-            <th>Product</th>
-            <th>Ks</th>
+            <th>Status</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -27,6 +27,8 @@
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
+                <td>{% for item in order.products %}
+                        {{ item.name }}, {{ item.amount }} ks{% endfor %}</td>
                 <td>{{ order.name }}</td>
                 <td>{{ order.surname }}</td>
                 <td>{{ order.email }}</td>
@@ -36,8 +38,12 @@
                 <td>{{ order.psc }}</td>
                 <td>{{ order.poznamka }}</td>
                 <td>{{ order.totalprice }}</td>
-                <td>{{ order.product }}</td>
-                <td>{{ order.count }}</td>
+                <td>{{ order.status ? 'Yes' : 'No' }}</td>
+
+                <td>{% for item in order.products %}
+                        {{ item.name }}, {{ item.amount }} ks<br>
+                    {% endfor %}
+                    <p style="font-weight: bold">Zboží za {{ order.totalPrice }},- Kč</p> </td>
                 <td>
                     <a href="{{ path('order_show', {'id': order.id}) }}">show</a>
                     <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
@@ -51,5 +57,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('order_new', {'id': product.id}) }}">Create new</a>
+    <a href="{{ path('order_new'}) }}">Create new</a>
 {% endblock %}

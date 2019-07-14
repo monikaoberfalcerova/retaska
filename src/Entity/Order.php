@@ -70,15 +70,14 @@ class Order
      */
     private $delivery;
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $status;
 
     /**
-     * @ORM\Column(type="integer")
-     *
+     * @ORM\Column(type="float")
      */
-    private $totalprice;
+    private $totalPrice;
     /**
      * @ORM\Column(type="integer")
      * @Assert\Range(
@@ -86,6 +85,12 @@ class Order
      * )
      */
     private $count;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $products;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -198,13 +203,13 @@ class Order
         $this->status = $status;
         return $this;
     }
-    public function getTotalprice(): ?float
+    public function getTotalPrice(): ?float
     {
-        return $this->totalprice;
+        return $this->totalPrice;
     }
-    public function setTotalprice(?float $totalprice): self
+    public function setTotalPrice(?float $totalPrice): self
     {
-        $this->totalprice = $totalprice;
+        $this->totalPrice = $totalPrice;
         return $this;
     }
     public function getDelivery(): ?Delivery
@@ -225,5 +230,16 @@ class Order
         $this->count = $count;
         return $this;
     }
+    public function getProducts(): ?array
+    {
+        return $this->products;
+    }
+    public function setProducts(?array $products): self
+    {
+        $this->products = $products;
+        return $this;
+    }
+
+
 
 }

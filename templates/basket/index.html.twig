@@ -1,8 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Košík{% endblock %}
+{% block title %}Re-taška košík{% endblock %}
 
 {% block body %}
+
+    <style>
+        body {background-color: white}
+        .example-wrapper code { background: white; padding: 2px 6px; }
+    </style>
+
+    {% if basket is empty %}
+    <div class="jumbotron" style="margin-top: 15%">
+        <h3>Košík je prázdný!</h3>
+        <a href="{{ path('product_publicindex') }}" class="btn btn-outline-info" style="margin: 5px 20px 20px 20px">Zpět na výpis produktů</a>
+    </div>
+
+    {% else %}
 
     <div class="container col-6" style="margin-top: 5%">
     <h1>    <img src="{{ asset('images/basket.PNG') }}" width="40" height="40" alt=""> Košík:</h1>
@@ -12,12 +25,12 @@
 
                 <thead class="thead-blue">
                 <tr>
-                    <th scope="col">Produkt ID</th>
                     <th scope="col">Název</th>
                     <th scope="col">Cena</th>
                     <th scope="col">Počet</th>
                     <th scope="col">Přidat</th>
                     <th scope="col">Odebrat</th>
+                    <th scope="col">Celková cena</th>
                 </tr>
                 </thead>
 
@@ -27,43 +40,36 @@
 
                     <tr>
 
-                        <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
                         <td>{{ item.amount }}</td>
                         <td><a href="{{ path('basket_plus', {'id': item.id}) }}"><button class="btn btn-success">+</button></a></td>
                         <td><a href="{{ path('basket_minus', {'id': item.id}) }}"><button class="btn btn-danger">-</button></a></td>
-
-
+                        <td>{% set price = item.price * item.amount %}{{ price }} ,- Kč</td>
                     </tr>
-
-
                 {% endfor %}
                 </tbody>
+
             </table>
-
-
+    <div class="row">
+    <div class="col-md-4">
+        <a href="{{ path('product_publicindex') }}" class="btn btn-light my-2 my-sm-0" style="background-color: #73A605; color: floralwhite; width: 10em; margin: 5px;
+">Pokračovat v objednávce</a><br>
+    </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a href="{{ path('order_new') }}" class="btn btn-light my-2 my-sm-0" style="background-color: #73A605; color: floralwhite; width: 10em; margin: 5px;
+">Přejít k platbě</a><br>
+            <a href="{{ path('basket_empty') }}" class="btn btn-light my-2 my-sm-0" style="background-color: #73A605; color: floralwhite; width: 10em; margin: 5px;
+">Vyprázdnit košík</a><br>
         </div>
-
-        <div class="col"></div>
-
-
-
-    <div class="col-3 pt-3">
-        <table class="table table-sm">
-        <ul class="nav nav-pills">
-            <li class="nav-item" >
-                <a class="btn btn-lg btn-primary btn-block" type="submit" align="center" href="{{ path('order_new') }}">Pokračovat v objednávce</a>
-            </li>
-        </ul>
+    </div>
     </div>
 
-    <br>
 
 
 
 
-
-
+    {% endif %}
 
 {% endblock %}
